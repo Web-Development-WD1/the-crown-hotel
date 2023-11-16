@@ -1,0 +1,106 @@
+.active {
+    background-color: #A7967B;
+    color: #ffffff !important;
+}
+
+/* Banner */
+.img-container{
+    background-image: url("../assets/images/banner_attractions.jpg");
+    height: 550px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Text on Banner alignment */
+.inner-container{
+    text-align: center;
+    width: 100%;
+    color: #F0EDDF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Text on Banner font style */
+h1{
+    font-size: 110px;
+    opacity: 80%;
+    text-shadow: 6px 2px 20px black;
+}
+/* Heading font style: our rooms & our facilities */
+.title-font{
+    font-size: 35px;
+    text-align: center;
+    padding: 50px 0px;
+}
+
+/* content container */
+.col-4-container {
+    margin: auto 6%;
+    padding: 16px;
+    display: flex;
+}
+
+.content-container {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.distance {
+    margin: 10px auto 30px auto;
+    display: inline-flex;
+    color: #434341;
+    font-size: 16px;
+}
+
+.distance i{
+    margin-right: 12px;
+}
+
+.txt-con h3{
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.txt-con p{
+    font-size: 16px;
+}
+
+.content-container img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 767px){
+    .img-container{
+        height: 350px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h1 {
+        font-size: 60px;
+    }
+}
+
+@media only screen and (max-width: 574px){
+    .img-container{
+        height: 200px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h1{
+        font-size: 40px;
+    }
+
+    .title-font{
+        font-size: 26px;
+        text-align: center;
+        padding: 50px 0px;
+    }
+}
