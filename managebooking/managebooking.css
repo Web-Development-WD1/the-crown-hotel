@@ -1,0 +1,49 @@
+main {
+    margin:8% 20% 20% 20%;
+    padding:16px;
+}
+
+h1 {
+    margin:5% 0;
+}
+
+h3 {
+    margin: 1% 0 1% 0;
+}
+
+#bookingReference {
+    margin: 1% 2% 2% 0;
+    border: none;
+    height: 39px;
+    width:500px;
+    border-radius: 8px;
+}
+
+#search {
+    border: none;
+    height: 39px;
+    color: white;
+    background-color: black;
+    width: 100px;
+    border-radius: 8px;
+}
+
+#search:hover {
+    background-color:#5a5a5a;
+    padding-bottom: 5px;
+}
+
+#search:active{
+    background-color:#292929;
+}
+
+#support_link {
+    text-decoration: none;
+    color: black;
+    font-size:15px;
+}
+
+#support_link:hover, #support_link:visited {
+    color: #5a5a5a;
+}
+
