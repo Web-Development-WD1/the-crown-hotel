@@ -1,0 +1,243 @@
+.img-container {
+  background-image: url("../assets/banner009.jpg");
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+}
+
+.booking {
+  margin-top: auto;
+  width: 100%;
+}
+
+.booking-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2ebd7;
+}
+
+.booking-info {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.room-price-div {
+  display: flex;
+  flex-direction: row;
+}
+.room-info {
+  margin-left: 10px;
+}
+.price {
+  max-width: 100%;
+}
+hr {
+  max-height: 100%;
+}
+
+label {
+  display: block;
+  color: #333;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.input-group {
+  position: relative;
+}
+
+input[type="date"],
+input[type="number"] {
+  width: 150px; /* Change the width as needed */ /* Adjust padding */
+  border: 0.5px solid rgba(6, 6, 6, 0.8);
+  border-radius: 20px; /* Make it oval */
+  font-size: 15px; /* Adjust font size */
+  color: gray; /* Change text color */
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0px 5px 0px 5px;
+}
+
+.booking-info button {
+  width: 9em;
+  height: 3em;
+  border-radius: 30em;
+  font-size: 10px;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  background-color: #3b3633;
+  color: #f0eddf;
+}
+.booking-info button:hover {
+  background-color: #4c4a47;
+  transform: scale(1.05);
+  transition: 0.45s;
+}
+.info-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.reservation {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.room-info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-right: 20px;
+  width: 80%;
+}
+
+.room-info img {
+  max-width: 60%;
+  height: auto;
+  max-height: 60%;
+}
+
+.price {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.text-description {
+  padding: 20px 50px 20px 50px;
+}
+.text-description p {
+  color: #434341;
+  padding: 20px 0 20px 0;
+}
+
+.text-description label {
+  font-size: 14px; /* Adjust the font size as needed */
+  background-color: #333; /* Change the background color as needed */
+  color: #fff; /* Change the text color to contrast with the background */
+  padding: 5px; /* Add padding for better appearance */
+  border-radius: 3px; /* Add rounded corners for a nicer look */
+  display: inline-block; /* Make the label inline-block to take only as much width as necessary */
+}
+
+.text-description input {
+  font-size: 14px; /* Adjust the font size as needed */
+  padding: 5px; /* Add padding for better appearance */
+  border: 1px solid #333; /* Add a border for better visibility */
+  border-radius: 3px; /* Add rounded corners for a nicer look */
+  margin-left: 5px; /* Adjust the margin to separate the label and input */
+}
+
+.price-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 20%;
+  font-size: 14px;
+}
+
+.price-info button {
+  width: 10em;
+  height: 3em;
+  border-radius: 1em;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #3b3633;
+  color: #f0eddf;
+}
+
+.price-info button:hover {
+  background-color: #4c4a47;
+  transform: scale(1.05);
+  transition: 0.45s;
+}
+
+.vertical-info {
+  margin-bottom: 10px; /* Margin between vertical info sections */
+}
+
+/* Responsive for smaller screens */
+@media screen and (max-width: 768px) {
+  .reservation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .room-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .room-info img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+
+  .text-description label {
+    display: inline-block;
+  }
+
+  .price-info {
+    border: 2px solid #ccc; 
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #f2ebd7;
+    width: 70%;
+  }
+
+  .text-description p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .reservation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .room-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .room-info img {
+    max-width: 80%;
+    height: auto;
+    max-height: 80%;
+  }
+
+  .text-description label {
+    display: inline-block;
+  }
+
+  .price-info {
+    border: 2px solid #ccc; 
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #f2ebd7;
+    width: 80%;
+  }
+
+  .text-description p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+}
+

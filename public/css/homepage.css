@@ -1,0 +1,142 @@
+.img-container {
+  background-image: url("../assets/banner-home.jpg");
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+}
+
+.img-container h2 {
+  font-size: 40px;
+  opacity: 80%;
+  text-shadow: 6px 2px 20px black;
+  text-align: end;
+  padding-right: 80px;
+}
+
+.booking {
+  margin-top: auto;
+  width: 100%;
+}
+
+.booking-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2ebd7;
+}
+
+.booking-info {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  color: #333;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.input-group {
+  position: relative;
+}
+
+input[type="date"],
+input[type="number"] {
+  width: 150px; /* Change the width as needed */ /* Adjust padding */
+  border: 0.5px solid rgba(6, 6, 6, 0.8);
+  border-radius: 20px; /* Make it oval */
+  font-size: 15px; /* Adjust font size */
+  color: gray; /* Change text color */
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0px 5px 0px 5px;
+}
+
+.booking-info button {
+  width: 9em;
+  height: 3em;
+  border-radius: 30em;
+  font-size: 10px;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  background-color: #3b3633;
+  color: #f0eddf;
+}
+.booking-info button:hover {
+  background-color: #4c4a47;
+  transform: scale(1.05);
+  transition: 0.45s;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.offer h1 {
+  font-size: 5vw;
+  text-align: center;
+  padding-bottom: 50px;
+  text-shadow: none;
+}
+
+.offer p {
+  font-size: 2vw;
+  margin: 0% 10% 0% 10%;
+}
+
+.scroll-view-container {
+  display: flex;
+  overflow-x: auto;
+  margin: 0 -10px;
+}
+
+.scroll-view-container img {
+  /* display: inline-block;
+  width: 50%;
+  height: 50%;
+  margin: 10px; */
+  flex: 0 0 auto;
+  width: 35%;
+  margin: 0 10px;
+}
+
+.scroll-view-container img:hover {
+  opacity: 0.8;
+  filter: brightness(90%);
+  transform: scale(1.05);
+  transition: 0.45s;
+}
+
+@media only screen and (max-width: 768px) {
+  .img-container {
+    padding: 10px;
+    height: 100%;
+  }
+
+  .img-container {
+    max-width: 100%;
+  }
+
+  .img-container h2 {
+    font-size: 20px;
+  }
+
+  input[type="date"],
+  input[type="number"] {
+    width: 100%; /* Make the inputs full-width on smaller screens */
+  }
+
+  .scroll-view-container img {
+    width: calc(60% - 10px);
+  }
+
+  .offer p {
+    font-size: 3vw;
+  }
+}

@@ -1,0 +1,241 @@
+/* Begin css for banner */
+.img-container{
+    background-image: url("../assets/bannner004.jpg"); /* put your image here */
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: multiply;
+}
+
+/* responsive */
+@media only screen and (max-width: 1000px){
+    .img-container{
+        height: 400px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    h1 {
+        font-size: 60px;
+    }
+}
+@media only screen and (max-width: 574px){
+    .img-container{
+        height: 200px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    h1{
+        font-size: 40px;
+    }
+}
+/* end css for banner */
+
+
+/* Heading font style: our rooms & our facilities */
+.title-font{
+    font-size: 44px;
+    text-align: center;
+    padding: 50px 0px;
+}
+
+/* scrollable images */
+.scroll-container {
+    white-space: nowrap;
+    overflow-x: auto;
+    display: inline-block;
+    height: 500px;
+}
+
+/* scrollable images alignment */
+.containerCenter {
+    display: inline-flex;
+    text-align: center;
+    color: white;
+    position: relative;
+    padding: 5px;
+    height: 100%;
+}
+
+/* scrollable image size */
+.containerCenter img {
+    width: 100%;
+    height: auto;
+}
+
+/* Text on scrollable images alightment */
+.scrollcentered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Text (title of rooms) font style */
+.scrollcentered p {
+    margin: 0;
+    font-size: 40px;
+    text-shadow: 2px 1px 6px black;
+}
+
+/* Link for Gallery pop up font style */
+.clickDecor a {
+    text-decoration: underline;
+    color: #ffffff;
+    font-size: 24px;
+    text-shadow: 2px 1px 4px black;
+}
+
+.facility-container {
+    margin: auto 15%;
+    padding: 16px;
+}
+
+.facility-container h3{
+    font-size: 32px;
+}
+
+.facility-container p{
+    font-size: 26px;
+}
+
+.container-img-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-img-left img {
+    width: 50%;
+    margin-left: 20px;
+    margin-bottom: 80px;
+}
+
+.text-container-right  {
+    margin: 0px 20px 80px 100px;
+}
+
+.container-img-right {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-img-right img {
+    width: 50%;
+    margin-right: 20px;
+    margin-bottom: 80px;
+}
+
+.container-img-left h3,
+.container-img-right h3,
+.container-img-right-last h3 {
+    margin-bottom: 10px;
+}
+
+.text-container-left {
+    margin: 0px 100px 80px 20px;
+}
+
+.last-containder img, .last-text-container{
+    margin-bottom: 0px !important;
+}
+
+.container-img-right-last {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-img-right-last img {
+    width: 50%;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.text-container-left-last {
+    margin: 0px 100px 0px 20px;
+}
+ 
+@media only screen and (max-width: 767px){
+    .scroll-container {
+        height: 200px;
+    }
+
+    .scrollcentered p {
+        margin: 0;
+        font-size: 32px;
+        text-shadow: 1px 0px 4px black;
+    }
+    
+    .clickDecor a {
+        text-decoration: underline;
+        color: #ffffff;
+        font-size: 20px;
+        text-shadow: 1px 0px 4px black;
+    }
+
+    /* our facilities */
+    .container-img-left {
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container-img-right,
+    .container-img-right-last {
+        display: flex;
+        flex-direction: column-reverse; /* Change the order for mobile */
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .container-img-left img, 
+    .container-img-right img,
+    .container-img-right-last img {
+        width: 85%;
+        margin: 0px 7% 5px 7%;
+    }
+    
+    .container-img-left h3, 
+    .container-img-right h3,
+    .container-img-right-last {
+        margin-bottom: 5px;
+    }
+    
+    .text-container-right, 
+    .text-container-left,
+    .text-container-left-last  {
+        margin: 0px 7% 20px 7%;
+    }
+
+    .facility-container h3{
+        font-size: 26px;
+    }
+    
+    .facility-container p{
+        font-size: 18px;
+    }
+}
+ 
+@media only screen and (max-width: 574px){
+
+    .title-font{
+        font-size: 26px;
+        text-align: center;
+        padding: 50px 0px;
+    }
+
+    .scrollcentered p {
+        margin: 0;
+        font-size: 28px;
+        text-shadow: 1px 0px 4px black;
+    }
+    
+    .clickDecor a {
+        text-decoration: underline;
+        color: #ffffff;
+        font-size: 16px;
+        text-shadow: 1px 0px 4px black;
+    }
+    
+}

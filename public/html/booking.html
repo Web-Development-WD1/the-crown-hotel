@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Crown Hotel</title>
+    <!-- CSS for header & footer -->
+    <link href="../css/header-footer.css" rel="stylesheet">
+    <!-- icon from fontawesome -->
+    <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+    <!-- import font family GFS Didot -->
+    <link href="https://fonts.cdnfonts.com/css/gfs-didot" rel="stylesheet">
+    <!-- hambuger -->
+    <script src="/scripts/toggle-bar.js" defer></script>
+    <link href="" rel="stylesheet">
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/booking.css">
+    <!---Search Button-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+
+<body>
+    <header id="navbar">
+        <nav class="navbar-container container">
+            <a href="../html/homepage.html" class="home-link"><img src="../assets/logo_hotel_black.png" alt="Home"></a>
+            <!-- begin toggle button -->
+            <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <!-- end toggle button -->
+            <div id="navbar-menu" aria-labelledby="navbar-toggle">
+            <ul class="navbar-links">
+                <li class="navbar-item"><a class="navbar-link" href="../html/about-us.html">About Us</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/rooms-facilities.html">Rooms & Facilities</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/attractions.html">Attractions</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/manage-booking.html">Manage Booking</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/support.html">Support</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/booking.html">Book a Stay</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Banner -->
+        <div class="img-container">
+            <div class="inner-container">
+                <!-- insert text -->
+                <h1>Book Now</h1><br>
+                <!-- end text -->
+            </div>
+        </div>
+
+        <!-- Booking form -->
+        <div class="booking">
+            <form class="booking-form">
+                <!-- Check-in div -->
+                <div class="booking-info">
+                    <label for="check-in">Check In:</label>
+                    <div class="input-group">
+                        <input type="date" id="checkInDate" required>
+                    </div>
+                </div>
+                <!-- Check-out div -->
+                <div class="booking-info">
+                    <label for="check-out">Check Out:</label>
+                    <div class="input-group">
+                        <input type="date" id="checkOutDate" required>
+                    </div>
+                </div>
+                <!-- Book now button -->
+                <div class="booking-info">
+                    <button type="button" class="btn" id="bookNowButton">Book Now</button>
+                </div>
+            </form>
+        </div>
+
+     <div class="info-found">
+        <h2>1 room found:</h2>
+    </div>
+
+<!-- Second Div: Reservation -->
+<div class="reservation">
+    <!-- First Sub-Div: Room Info (Horizontal) -->
+    <div class="room-info">
+        <!-- Picture on the left, Text Description on the right -->
+        <img src="../assets/standard_double_room.jpg" alt="Room 1">
+        <div class="text-description">
+            <h2>Standard Double Room</h2>
+            <p>Our standard double room accommodates up to two guests. Features double bed, en-suite bathroom, tea and coffee making facilities and free high-speed WIFI. Also comes with hair dryer, complementary toiletries  and ample storage. Perfect for couples and single travellers.</p>
+            <h3>Price: $129</h3>
+            <!-- User input for choosing the number of rooms -->
+            <label for="numRooms">No. of Rooms:</label>
+            <input type="number" id="numRooms" name="numRooms" value="1" min="1">
+        </div>
+    </div>
+    <!-- Solid line to separate room-info and price-info -->
+    <hr>
+
+    <!-- Second Sub-Div: Price Info (Vertical) -->
+    <div class="price-info">
+        <!-- Number of rooms, Total price, and Proceed to Pay button -->
+        <div class="vertical-info">
+            <label for="totalRooms">Number of Rooms:</label>
+            <p id="totalRooms">1</p>
+        </div>
+        <div class="vertical-info">
+            <label for="totalPrice">Total Price:</label>
+            <p id="totalPrice">$100</p>
+        </div>
+        <button id="proceedToPay" onclick="location.href='../html/payment.html'">Proceed to Pay</button>
+    </div>
+</div> 
+</main>
+    <!-- end content -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="row">
+                    <div class="footer-col">
+                        <div class="footer-logo">
+                            <a href="../html/homepage.html">
+                                <img class="footer-logo" src="../assets/logo_hotel_white.png" alt="Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>HOTEL</h4>
+                        <ul>
+                            <li><a href="../html/about-us.html">About Us</a></li>
+                            <li><a href="../html/rooms-facilities.html">Our Rooms</a></li>
+                            <li><a href="../html/rooms-facilities.html">Our facilities</a></li>
+                            <li><a href="../html/attractions.html">Attractions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>HELP CENTER</h4>
+                        <ul>
+                            <li><a href="../html/support.html">Contact us & FAQs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>CONTACT INFO</h4>
+                        <ul>
+                            <li><p>Phone: +44 1234 567 890</p></li>
+                            <li><p>Email: <a href="mailto:contact@crownhotel.co.uk">contact@crownhotel.co.uk</a></p></li>
+                            <li><p>Location: 100 Smart Street, Norwich, UK</p></li>
+                        </ul>
+                        <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023  The Crown Hotel | All rights reserved</p>
+            </div>
+        </footer>
+      <script src="../scripts/bookingScript.js"></script> 
+      <script src="../scripts/script.js"></script>
+    </body>
+
+</html>

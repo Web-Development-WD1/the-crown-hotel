@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/css/header-footer.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/banner.css">
+    <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+    <!-- import font family GFS Didot -->
+    <link href="https://fonts.cdnfonts.com/css/gfs-didot" rel="stylesheet">
+    <!-- hambuger -->
+    <script src="../scripts/toggle-bar.js" defer></script>
+    
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="navbar">
+        <nav class="navbar-container container">
+            <a href="./homepage.html" class="home-link"><img src="../assets/logo_hotel_black.png" alt="Home"></a>
+            <!-- begin toggle button -->
+            <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <!-- end toggle button -->
+            <div id="navbar-menu" aria-labelledby="navbar-toggle">
+            <ul class="navbar-links">
+                <li class="navbar-item"><a class="navbar-link" href="../html/about-us.html">About Us</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/rooms-facilities.html">Rooms & Facilities</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/attractions.html">Attractions</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/manage-booking.html">Manage Booking</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/support.html">Support</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="../html/booking.html">Book a Stay</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+    <!-- Banner-->
+        <div class="img-container">
+                    <div class="inner-container">
+                <!-- insert text -->
+                <h1>The Crown Hotel</h1><br>
+                <h2>"Escape to luxury"</h2>
+                <!-- end text -->
+            </div>
+
+           
+        </div>
+         <!-- Booking form -->
+            <div class="booking">
+                <form class="booking-form">
+                    <!-- Check in div -->
+                    <div class="booking-info">
+                        <label for="check-in">Check In:</label>
+                        <div class="input-group">
+                            <input type="date" id="checkInDate" required>
+                        </div>
+                    </div>
+                    <!-- Check out div -->
+                    <div class="booking-info">
+                        <label for="check-out">Check Out:</label>
+                        <div class="input-group">
+                            <input type="date" id="checkOutDate" required>
+                        </div>
+                    </div>
+                    <!-- Book now button -->
+                    <div class="booking-info">
+                        <button type="button" class="btn" id="bookNowButton">Book Now</button>
+
+                    </div>
+                 
+                </form>
+            </div>
+            <div>
+            </div> 
+
+        <!-- Our best offers -->
+        <div class="offer">
+            <h1>Our Best Offers</h1>
+            <p>Discover opulence at its finest. Our best offer invites you to elevate your stay and experience unrivaled
+                luxury.</p>
+        </div>
+        <!-- Horizontal views -->
+        <div class="scroll-view-container">
+            <img src="../assets/double_superior_room.jpg" alt="Room 1">
+            <img src="../assets/spd_room1.png" alt="Room 2">
+            <img src="../assets/spt_room1.png" alt="Room 3">
+            <img src="../assets/sd_room1.png" alt="Room 3">
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+            <div class="footer-container">
+                <div class="row">
+                    <div class="footer-col">
+                        <div class="footer-logo">
+                            <a href="../html/homepage.html">
+                                <img class="footer-logo" src="../assets/logo_hotel_white.png" alt="Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>HOTEL</h4>
+                        <ul>
+                            <li><a href="../html/about-us.html">About Us</a></li>
+                            <li><a href="../html/rooms-facilities.html">Our Rooms</a></li>
+                            <li><a href="../html/rooms-facilities.html">Our facilities</a></li>
+                            <li><a href="../html/attractions.html">Attractions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>HELP CENTER</h4>
+                        <ul>
+                            <li><a href="../html/support.html">Contact us & FAQs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>CONTACT INFO</h4>
+                        <ul>
+                            <li><p>Phone: +44 1234 567 890</p></li>
+                            <li><p>Email: <a href="mailto:contact@crownhotel.co.uk">contact@crownhotel.co.uk</a></p></li>
+                            <li><p>Location: 100 Smart Street, Norwich, UK</p></li>
+                        </ul>
+                        <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023  The Crown Hotel | All rights reserved</p>
+            </div>
+         </footer>
+  <script src="../scripts/script.js" defer></script>  
+</body>
+
+</html>

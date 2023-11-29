@@ -1,0 +1,109 @@
+.booking-reference {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5% 10% 10% 10%;
+}
+
+.reference-title {
+  padding-bottom: 20px;
+}
+
+.reference-box {
+  background-color: #e7e6e0;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.detailed-msg {
+  text-align: start;
+}
+
+.booking-msg {
+padding: 10px;
+border: solid 1px #4c4a47;
+border-radius: 5px;
+}
+
+.welcome-msg {
+  width: 80%;
+  padding: 10px;
+}
+.vertical-hr {
+  margin: 10px;
+  display: none;
+}
+
+.vertical-info {
+  margin-bottom: 10px;
+  text-align: start;
+}
+.check {
+  width: 100%;
+}
+.check p {
+  font-size: 10px;
+}
+.check small {
+  font-size: 8px;
+}
+.btn {
+  margin: 5%;
+}
+
+button {
+  width: 8em;
+  height: 2.5em;
+  border-radius: 1em;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #3b3633;
+  color: #f0eddf;
+}
+
+button:hover {
+  background-color: #4c4a47;
+  transform: scale(1.05);
+  transition: 0.45s;
+}
+
+@media only screen and (min-width: 600px) {
+  .booking-reference {
+    margin: 5% 20% 10% 20%;
+  }
+
+  .reference-title {
+    padding-bottom: 30px;
+  }
+
+  .reference-box {
+    padding: 50px;
+  }
+
+  .detailed-msg {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .booking-msg {
+    width: 50%; /* Increase the width for larger screens */
+    margin-left: 20px; /* Adjusted margin for larger screens */
+  }
+
+  .welcome-msg {
+    width: 100%;
+  }
+
+  .check {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .vertical-hr {
+    display: block;
+  }
+
+  .vertical-info {
+    margin-bottom: 20px;
+  }
+}
