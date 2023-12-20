@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="/css/back-sidebar.css" rel="stylesheet">
+        <link href="/css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="/images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="/js/back-sidebar.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span>The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p style="color: #484848;">Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Customer Reservation</h1>
+            </div>
+            <div class="book-container">
+                <p>Booking Reference:</p>
+                <p class="booking-no"><%= b_ref %></p>
+            </div>
+            <!-- put table data HERE -->
+            <div class="main-section">
+            <div class="main-text-container">
+                <div class="text-container">
+                    <p>Customer Details</p>
+                        <div class="data1">
+                            <label for="fname">Full Name: </label>
+                            <input id="fname" name="fname" value="<%= mappedBookDetail ? mappedBookDetail.c_name : '' %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="address">Address: </label>
+                            <input id="address" name="address" value="<%= mappedBookDetail ? mappedBookDetail.c_address : '' %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="email">Email: </label>
+                            <input id="email" name="email" value="<%= mappedBookDetail ? mappedBookDetail.c_email : '' %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="cardno">Card Number: </label>
+                            <input id="cardno" name="cardno" value="<%= mappedBookDetail ? mappedBookDetail.c_cardno : '' %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="cvc">CVC: </label>
+                            <input id="cvc" name="cvc" value="<%= mappedBookDetail ? mappedBookDetail.c_cvc : '' %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="cardexp">Expiry Date: </label>
+                            <input id="cardexp" name="cardexp" value="<%= mappedBookDetail ? mappedBookDetail.c_cardexp : '' %>" disabled>
+                        </div>
+                </div>
+                <div class="text-container1">
+                    <p>Booking Details</p>
+                        <div class="data">
+                            <label for="checkin-date">Check-in: </label>
+                            <input id="checkin-date" name="checkin-date" value="<%= mappedBookDetail ? mappedBookDetail.checkin : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="checkout-date">Check-out: </label>
+                            <input id="checkout-date" name="checkout-date" value="<%= mappedBookDetail ? mappedBookDetail.checkout : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="note">Note(s): </label>
+                            <input id="note" name="note" value="<%= mappedBookDetail ? mappedBookDetail.notes : '' %>" disabled>
+                        </div>
+                </div>
+            </div>
+                <div class="text-container2">
+                    <p>Payment Details</p>
+                    <table id="priceTable">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Description</th>
+                                <th>Unit Price</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tableOfPrice">
+                            <% if (mappedBookDetail && mappedBookDetail.rooms && mappedBookDetail.rooms.length > 0) { %>
+                                <% for (let i = 0; i < mappedBookDetail.rooms.length; i++) { %>
+                                    <tr>
+                                        <td><%= mappedBookDetail.rooms[i].r_class %></td>
+                                        <td>Room No: <%= mappedBookDetail.rooms[i].r_no %></td>
+                                        <td>£ <%= mappedBookDetail.rooms[i].price %></td>
+                                        <td><%= mappedBookDetail ? mappedBookDetail.no_nights : '' %> night(s)</td>
+                                        <td>£ <%= mappedBookDetail.rooms[i].total %></td>
+                                    </tr>
+                                    <!-- Display item details under the corresponding room allocation -->
+                                    <% if (mappedBookDetail.itemDetail && mappedBookDetail.itemDetail.length > 0) { %>
+                                        <% for (let j = 0; j < mappedBookDetail.itemDetail.length; j++) { %>
+                                            <% if (mappedBookDetail.itemDetail[j].r_no === mappedBookDetail.rooms[i].r_no) { %>
+                                                <tr>
+                                                    <td>Food/Drinks</td>
+                                                    <td><%= mappedBookDetail.itemDetail[j].item %></td>
+                                                    <td>£ <%= mappedBookDetail.itemDetail[j].price %></td>
+                                                    <td><%= mappedBookDetail.itemDetail[j].itemqty %></td>
+                                                    <td>£ <%= mappedBookDetail.itemDetail[j].total %></td>
+                                                </tr>
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="5">
+                                        <p class="smalltext">No rooms available</p>
+                                    </td>
+                                </tr>
+                            <% } %>
+                            <tr class="totalPrice">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total</td>
+                                <td>£ <%= mappedBookDetail ? mappedBookDetail.total_price : '' %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="float-right">
+                <button class="button2 btn-big btn-back" onclick="history.back()">Back</button>
+                <button type="submit" class="button2 btn-big" id="checkoutBtn">Collect Payment & Check-out</button>
+            </div>
+        </div>
+        <script>
+            document.getElementById('checkoutBtn').addEventListener('click', async () => {
+                try {        
+                    // Make an asynchronous request to update the room status
+                    const response = await fetch(`/proceed-check-out/<%= b_ref %>`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        // access housekeeper with req.body.housekeeper
+                    });
+        
+                    if (response.ok) {
+                        alert('<%= b_ref %>' + ' has been checked-out.\nGo to Room Management to assign housekeeper');
+                        window.location.href = '/customer-reservation';
+                    } else {
+                        console.error('Failed to check-out');
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            });
+        </script>
+        <!-- end content -->
+    </body>
+</html>

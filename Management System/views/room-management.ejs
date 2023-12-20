@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="/css/back-sidebar.css" rel="stylesheet">
+        <link href="/css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="/images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="/js/back-sidebar.js" defer></script>
+        <!-- filter js -->
+        <script src="/js/filter.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span style="font-size: small;">The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p>Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Room Management</h1>
+            </div>
+            <p class="label">Filter by:</p>
+            <div class="book-container block-ctn">
+                <!-- <label for="b-ref">Filter by:</label><br> -->
+                <input type="text" onkeyup="filterRoomNo()" id="r-ref" name="r-ref" placeholder="ex. 101"><br><br>
+                <!-- <label for="room-type">Room Type</label> -->
+                <select name="room-type" id="room-type" onchange="filterRoomType()" >
+                    <option value="Select Room Type" disabled selected>Select room type</option>
+                    <option>Standard Double Room</option>
+                    <option>Standard Twin Room</option>
+                    <option>Superior Double Room</option>
+                    <option>Superior Twin Room</option>
+                </select>
+                <!-- <label for="status">Status</label> -->
+                <br>
+                <select name="status" id="status" onchange="filterStatus()">
+                    <option value="Select Status" disabled selected>Select status</option>
+                    <option value="available">Available</option>
+                    <option value="occupied">Occupied</option>
+                    <option value="unavailable">Unavailable</option>
+                    <option value="checked-out">Checked-out</option>
+                </select>
+                <input type="submit" id="clear" class="button1" onclick="clearFilter()" value="Clear Filter">
+            </div>
+            <div class="customer-table">
+                <table id="roomTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">Room Number</th>
+                            <th>Room Type</th>
+                            <th style="width: 15%;">Status</th>
+                            <th style="width: 15%;">Action</th>
+                            <th style="width: 20%;">Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% roomData.forEach(room => { %>
+                            <tr>
+                                <td><%= room.r_no %></td>
+                                <td><%= room.r_class %></td>
+                                <td><%= room.r_status %></td>
+                                <td>
+                                    <% if (room.r_status === 'Checked-out') { %>
+                                        <% if (!room.clean_by) { %>
+                                            <a href="/assign-cleaning/<%= room.r_no %>">
+                                                Assign Cleaning
+                                            </a>
+                                        <% } else { %>
+                                            <p></p>
+                                        <% } %>
+                                    <% } else if (room.r_status === 'Occupied') { %>
+                                        <a href="/room-details/<%= room.r_no %>">
+                                            See Details
+                                        </a>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <% if (room.r_notes) { %>
+                                        <div class="reporticon"><i class="fa-solid fa-triangle-exclamation report"></i></div>
+                                        <div class="notes"><%= room.r_notes %><br>(Reported by <%= room.clean_by %>)</div>
+                                    <% } else if (room.clean_by) { %>
+                                        <div class="same-line center1">
+                                            <i class="fa-solid fa-broom" style="margin-right: 10px;"></i>
+                                            <p><%= room.clean_by %></p>
+                                        </div>
+                                    <% } else { %>
+                                        <%= room.r_notes %>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end content -->
+        <script>
+            // Add hover functionality using JavaScript
+            document.addEventListener('DOMContentLoaded', function () {
+                const notesIcons = document.querySelectorAll('.report');
+                const notesTexts = document.querySelectorAll('.notes');
+
+                notesIcons.forEach(function (notesIcon, index) {
+                    notesIcon.addEventListener('mouseover', function () {
+                        notesTexts[index].style.display = 'block';
+                    });
+
+                    notesIcon.addEventListener('mouseout', function () {
+                        notesTexts[index].style.display = 'none';
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

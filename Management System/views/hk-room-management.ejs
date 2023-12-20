@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Housekeeper</title>
+        <!-- CSS for header & footer -->
+        <link href="css/housekeeper.css" rel="stylesheet">
+        <link href="css/back-sidebar.css" rel="stylesheet">
+        <link rel="icon" href="images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- import font family GFS Didot -->
+        <link href="https://fonts.cdnfonts.com/css/gfs-didot" rel="stylesheet">
+        <!-- sidebar -->
+        <script src="js/back-sidebar.js" defer></script>
+        <!-- room filter -->
+        <script src="js/hk-filter.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="images/logo_hotel_black.png">
+                    <span style="font-size: small;">The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="images/user-clean.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Chocolate C.</p>
+                    <p>Housekeeper</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="hk-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="hk-room-management" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Room Management</h1>
+            </div>
+            <p class="label">Filter by:</p>
+            <div class="book-container block-ctn">
+                <!-- <label for="b-ref">Filter by:</label><br> -->
+                <input type="text" id="r-ref" name="r-ref" placeholder="ex. 101" oninput="filterRoomsByRoomNo(this.value)"><br><br>
+                <!-- <label for="room-type">Room Type</label> -->
+                <select name="room-type" id="room-type" onchange="filterRoomsByType(this.value)">
+                    <option value="Select room type" disabled selected>Select room type</option>
+                    <!-- note to future self: here, the option value needs to be the same as the
+                    text content of the p element we are trying to grab. -->
+                    <option value="Standard Double Rooms">Standard Double Room</option>
+                    <option value="Standard Twin Rooms">Standard Twin Room</option>
+                    <option value="Superior Double Rooms">Superior Double Room</option>
+                    <option value="Superior Twin Rooms">Superior Twin Room</option>
+                </select>
+                <!-- <label for="status">Status</label> -->
+                <br>
+                <select name="status" id="status" onchange="filterRoomsByStatus(this.value)">
+                    <option value="Select Status" disabled selected>Select status</option>
+                    <option value="checked-out">Checked-out</option>
+                    <option value="unavailable">Unavailable</option>
+                </select>
+                <input type="submit" id="clear" class="button1" onclick="clearFilter()" value="Clear Filter">
+                <input type="submit" id="search" class="button1" value="Search">
+            </div>
+            <div class="room-container">
+                <!-- display the rooms dynamically based on the room type and room status -->
+                <% Object.keys(roomData).forEach(roomType => { %>
+                  <p class="room-type"><%= roomType %></p>
+                  <div class="room-boxes">
+                    <% roomData[roomType].forEach(room => { %>
+                      <a href="<%= room.r_status === 'X' ? 'hk-reported/' + room.r_no : (room.r_status === 'C' ? 'hk-clean/' + room.r_no : '#') %>" class="<%= room.r_status === 'X' ? 'report-room' : 'room-box' %>">
+                        <span class="roomBig">
+                          <%= room.r_no %>
+                        </span>
+                      </a>
+                    <% }); %>
+                  </div>
+                <% }); %>
+              </div>
+           
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="../css/back-sidebar.css" rel="stylesheet">
+        <link href="../css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="../js/back-sidebar.js" defer></script>
+        <script src="../js/check-in.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span>The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p style="color: #484848;">Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Check-in Customer</h1>
+            </div>          
+                <!-- put table data HERE -->
+            <div>
+                <div class="text-container-checkin">
+                    <p>Booking Reference:</p>
+                    <div class="center">
+                        <!-- <label for="b-ref">Booking Reference:</label><br> -->
+                        <input type="text" class="btn-big" id="b-ref-new" name="b-ref" placeholder="ex. 12345"><br><br>
+                        <button id="search" class="button1-new btn-big">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="float-right">
+        <button class="button2 btn-big btn-back center" onclick="history.back()">Back</button>
+        </div>
+        <!-- end content -->
+        <script>
+            document.getElementById('search').addEventListener('click', async () => {
+                try {
+                    const bRefInput = document.getElementById('bRefInput').value;
+                    const response = await fetch('/book-ref', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ b_ref: bRefInput }),
+                    });
+
+                    if (response.ok) {
+                        window.location.href = `/cr-booking-details/${bRefInput}`;
+                    } else {
+                        console.error('Booking Reference not found');
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            });
+        </script>
+    </body>
+</html>

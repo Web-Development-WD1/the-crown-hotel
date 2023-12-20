@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="/css/back-sidebar.css" rel="stylesheet">
+        <link href="/css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="/images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="/js/back-sidebar.js" defer></script>
+        <script src="/js/filter.js" defer></script>
+        <!-- <script src="../js/insert-table-guest.js" defer></script> -->
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span>The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p style="color: #484848;">Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Customer Reservation</h1>
+            </div>
+            <div class="same-line">
+                <div>
+                    <p>Booking Reference:</p>
+                    <div class="book-container">
+                        <!-- <label for="b-ref">Booking Reference:</label><br> -->
+                        <input type="text" id="b-ref" name="b-ref" placeholder="ex. 12345" onkeyup="filterBookNo()"><br><br>
+                    </div>
+                </div>
+                <div class="checkintext">
+                    <p>Check-in:</p>
+                    <div class="book-container">
+                        <select name="checkinDate" id="checkinDate" onchange="filterCheckin()">
+                            <option value="">All</option>
+                            <option value="" id="todayDate">Today</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="checkintext">
+                    <p>Status:</p>
+                    <div class="book-container">
+                        <select name="b_status" id="b_status" onchange="filterBStatus()">
+                            <option value="">All</option>
+                            <option value="Pending Arrival">Pending Arrival</option>
+                            <option value="Checked-in">Checked-in</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <br>
+                    <div class="book-container">
+                        <input type="submit" id="clear1" class="button1" onclick="clearFilter1()" value="Clear Filter">
+                        <a href="/cr-new-reservation" class="button2 link-button">New Reservation</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- put table data HERE -->
+            <div class="customer-table">
+                <table id="guestTable">
+                    <thead>
+                    <tr>
+                        <th style="width: 12%;">Booking Reference</th>
+                        <th style="width: 25%;">Full Name</th>
+                        <th>Email</th>
+                        <th style="width: 20%;">check-in Date</th>
+                        <th style="width: 20%;">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tableOfGuest">
+                        <% bookData.forEach(book => { %>
+                            <tr>
+                                <td><a href="<% 
+                                        switch (book.b_status) {
+                                            case 'Pending Arrival':
+                                                %>booking-details/<%= book.b_ref %><%
+                                                break;
+                                            case 'Checked-in':
+                                                %>booking-details-check-out/<%= book.b_ref %><%
+                                                break;
+                                            default:
+                                                %>#/<%= book.b_ref %><%
+                                        }
+                                    %>">
+                                        <%= book.b_ref %>
+                                    </a>
+                                </td>
+                                <td><%= book.c_name %></td>
+                                <td><%= book.c_email %></td>
+                                <td><%= book.checkin %></td>
+                                <td><%= book.b_status %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end content -->
+        <script>
+            document.getElementById("todayDate").value = new Date().toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+            });
+            console.log(document.getElementById("todayDate").value);
+        </script>
+    </body>
+</html>

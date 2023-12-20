@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Housekeeper</title>
+        <!-- CSS for header & footer -->
+        <link href="css/housekeeper.css" rel="stylesheet">
+        <link href="css/back-sidebar.css" rel="stylesheet">
+        <link rel="icon" href="images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- import font family GFS Didot -->
+        <link href="https://fonts.cdnfonts.com/css/gfs-didot" rel="stylesheet">
+        <!-- icon for title -->
+        <link rel="icon" href="images/logo_hotel_black.png" type="image/icon type">
+        <!-- sidebar -->
+        <script src="js/back-sidebar.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="images/logo_hotel_black.png">
+                    <span style="font-size: small;">The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="images/user-clean.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Chocolate C.</p>
+                    <p>Housekeeper</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="hk-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="hk-room-management" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="main-topic">
+                Daily Report
+            </div>
+            <!-- dynamically rendering room dashboard information -->
+            <div class="info-boxes">
+				<div class="info-box">
+					<div class="box-icon">
+                        <i class="fa-solid fa-broom fa-2xl"></i>
+                    </div>
+					<div class="box-content">
+						<span class="big"><%= room_c %></span>
+						Rooms to be cleaned
+					</div>
+				</div>
+				<div class="info-box">
+					<div class="box-icon">
+                        <i class="fa-solid fa-circle-check fa-2xl"></i>					</div>
+					<div class="box-content">
+						<span class="big"><%= room_a %></span>
+						Rooms Cleaned
+					</div>
+				</div>
+				<div class="info-box">
+					<div class="box-icon">
+                        <i class="fa-solid fa-triangle-exclamation fa-2xl"></i>                    </div>
+					<div class="box-content">
+						<span class="big"><%= room_x %></span>
+						Reported Rooms
+					</div>
+				</div>
+			</div>
+            <div class="main-topic">
+                Shortcut
+            </div>
+            <div class="shortcut-boxes">
+                <a href="hk-room-management" class="shortcut-box"> 
+                    <i class="fa-solid fa-plus fa-2xl shortcut-icon"></i>
+                    <span class="shortcutBig">Room Management</span>
+                </a>
+			</div>
+        </div>
+        <!-- end content -->
+    </body>
+</html>

@@ -1,0 +1,606 @@
+.topic {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* begin input */
+.book-container {
+  display: flex;
+  margin-top: 10px;
+}
+
+input, select {
+  border-radius: 20px;
+  border: 1px solid #484848;
+  padding: 5px 20px;
+  margin-right: 10px;
+  background-color: #ffffff;
+}
+
+select {
+  cursor: pointer;
+}
+
+input:focus {
+  outline: #6d6d6d;
+  transition: all 0.5s ease;
+}
+
+.button1, .button2 {
+  border-radius: 20px;
+  background-color: #484848;
+  color: #ffffff;
+  border: none;
+  padding: 5px 20px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.link-button {
+  max-width: fit-content !important;
+  font-size: 0.8rem;
+  padding-top: 12px;
+}
+
+.button1 {
+  min-width: 50px;
+}
+
+.button2 {
+  max-width: 145px;
+}
+
+.button1:hover, .button2:hover {
+  background-color: #6d6d6d;
+  border: 1px solid #838282;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+/* end input */
+
+/* begin table */
+.customer-table {
+  overflow-x: auto;
+}
+
+table, td, th {
+  border-bottom: 1px solid #B9B9B9;
+  padding: 12px;
+  text-align: center;
+}
+
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+  height: 70px;
+}
+
+th {
+  background-color: #484848;
+  color: #ffffff;
+}
+
+td {
+  height: 40px;
+}
+/* end table */
+
+/* temporary link to booking details */
+.bk-details {
+  color: #000000;
+}
+
+.bk-details:hover {
+  color: #6d6d6d;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+/* booking details page */
+.book-container p {
+  margin-right: 10px;
+  margin-bottom: 20px;
+  font-size: 1.7em;
+}
+
+/* information box */
+.main-text-container {
+  padding: 20px;
+  background-color: #484848;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+}
+.text-container {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.con-small {
+  width: 60%;
+}
+
+.text-container p{
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.data {
+  margin-bottom: 30px;
+  padding-left: 10px;
+}
+
+.data input, .data select{
+  float: right;
+  margin-right: 10px;
+  width: 60%;
+}
+
+.d-block input{
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.float-right {
+  float: right;
+  display: flex;
+}
+
+.btn-big, #clean {
+  border-radius: 10px;
+  padding: 10px 20px;
+  max-width: fit-content;
+}
+
+.btn-back {
+  background-color: #ffffff;
+  color: #484848;
+  margin-right: 15px;
+}
+
+.btn-back:hover {
+  cursor: pointer;
+  background-color: #cecece;
+  border: none;
+}
+
+@media screen and (max-width: 1180px) {
+  .data input{
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main-text-container {
+    display: block;
+  }
+  .con-small {
+    width: 100%;
+  }
+  .text-container{
+    margin: auto auto 20px auto;
+    padding: 30px;
+  }
+}
+/* responsive room management */
+@media screen and (max-width: 770px) {
+  .block-ctn {
+     flex-wrap: wrap;
+  }
+
+  #r-ref {
+    width: 20%;
+  }
+
+  #room-type {
+    width: 26%;
+  }
+
+  /* .block-ctn .button1, #status, #r-ref, #room-type {
+    margin-top: 10px;
+  } */
+  
+}
+
+@media screen and (max-width: 602px) {
+  #b-ref {
+    width: 35%;
+  }
+
+  #r-ref {
+    width: 60%;
+    margin-bottom: -10px;
+  }
+
+  .block-ctn {
+    display: block !important;
+  }
+
+  #search {
+    margin-top: 10px;
+  }
+
+  #room-type {
+    width: 60%;
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+
+  #status {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .link-button {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+
+/* Room Management - check out */
+.center {
+  text-align: center;
+}
+
+.center1 {
+  align-items: center;
+  justify-content: center;
+}
+
+.statuslabel {
+  display: inline-block !important;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0.3rem 0.3rem 0.3rem rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.float-right p{
+  font-size: 0.8rem;
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.center .button1 {
+  margin-bottom: 30px;
+}
+
+/* Room Management - check in */
+.text-container-checkin {
+  display: block;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.text-container-checkin p{
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+input #b-ref-new {
+  margin-right: 0px;
+}
+
+.button1-new {
+  background-color: #484848;
+  color: #ffffff;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  border: none;  
+}
+
+.button2-new {
+  background-color: #484848;
+  color: #ffffff;
+  margin-right: 0px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+  text-decoration: none;
+}
+
+.button1-new:hover, .button2-new:hover {
+  background-color: #6d6d6d;
+  border: 1px solid #838282;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+/* hosuekeeper dashboard */
+.main-topic {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: -30px;
+}
+
+.shortcut-boxes a{
+  text-decoration: none;
+}
+
+.info-boxes {
+  padding: 3em 0 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 2em;
+}
+
+  .info-box {
+    background: white;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2em;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+}
+
+.box-icon i{
+        display: block;
+        width: 48px;
+        height: 48px;
+        padding-top: 15px;
+}
+    
+.box-content {			
+      padding-left: 1.25em;
+      white-space: nowrap;
+      color: #484848;
+}
+
+.big {
+    display: block;
+    font-size: 2em;
+    line-height: 150%;
+    color: #000000;
+    font-weight: 600;
+}
+
+.shortcut-boxes {
+  padding: 3em 0 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 2em;
+}
+
+  .shortcut-box {
+    background: #484848;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2em;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.shortcut-box a{
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+}
+
+.shortcut-box:hover {
+  transition: all 0.5s ease;
+  background-color: #838282;
+}
+
+.shortcut-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding-top: 20px;
+  color: #ffffff;
+}
+
+.shortcut-content {			
+padding-left: 0.1em;
+white-space: nowrap;
+color: #ffffff;
+}
+
+.shortcutBig {
+  display: block;
+  font-size: 1.5em;
+  line-height: 150%;
+  color: #ffffff;
+  font-weight: 600;
+  padding-top: 2px;
+}
+
+/* housekeeper room management */
+
+.room-container {
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.room-container p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.room-boxes {
+  padding: 3em 0 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 2em;
+}
+
+.room-box {
+    background: #D9D9D9;
+    height: 300px;
+    display: flex;
+    border-radius: 30px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+}
+
+.room-box:hover {
+  transition: all 0.3s ease;
+  background-color: #bdbdbd;
+}
+
+.roomBig {
+  display: block;
+  font-size: 1.5em;
+}
+
+/* css when room is reported */
+.report-room {
+  background: #7f1414;
+  color: #ffffff;
+  height: 300px;
+  display: flex;
+  border-radius: 30px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-room:hover {
+  transition: all 0.3s ease;
+  background: #6e1212;
+}
+
+/* Housekeeper reported room */
+.report-text-container {
+  display: inline-flex;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.report-text-container button {
+  margin-left: 10px;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.comment input{
+  height: 100px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.comment input:disabled{
+  background-color: #eaeaea;
+}
+
+.hidden {
+  display: none;
+}
+
+/* housekeeper clean room */
+
+hr {
+  margin: 40px 60px;
+
+}
+
+.huge-btn {
+  margin-top: 25px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  background-color: #484848;
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  height: 150px;
+  width: 350px;
+  font-size: 1.4rem;
+}
+
+.huge-btn:hover {
+  background-color: #6d6d6d;
+  border: 1px solid #838282;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.comment-small {
+  display: inline-block;
+}
+
+.wrong {
+  margin-left: -255px;
+}
+
+.reportbutton {
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px 10px;
+  background-color: #484848;
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  height: 50px;
+  max-width: 150px;
+}
+
+.reportbutton:hover {
+  background-color: #6d6d6d;
+  border: 1px solid #838282;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.comment-small input{
+  margin-top: 10px;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.back-btn-clean {
+  background-color: #ffffff;
+  color: #484848;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 90px;
+  height: 45px;
+  border: none;
+  text-decoration: none;
+  margin-top: 40px;
+}
+
+.back-btn-clean:hover {
+  cursor: pointer;
+  background-color: #cecece;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+#reportMessage {
+  padding-top:20px;
+}
+

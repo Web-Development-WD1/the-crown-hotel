@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Housekeeper</title>
+        <!-- CSS for header & footer -->
+        <link href="/css/housekeeper.css" rel="stylesheet">
+        <link href="/css/back-sidebar.css" rel="stylesheet">
+        <link rel="icon" href="/images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- import font family GFS Didot -->
+        <link href="https://fonts.cdnfonts.com/css/gfs-didot" rel="stylesheet">
+        <!-- sidebar -->
+        <script src="/js/back-sidebar.js" defer></script>
+        <!-- <script src="/js/edit-comment.js" defer></script> -->
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="/images/logo_hotel_black.png">
+                    <span style="font-size: small;">The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="/images/user-clean.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Chocolate C.</p>
+                    <p>Housekeeper</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/hk-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/hk-room-management" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Room Management</h1>
+            </div>
+            <div class="center">
+                <div class="book-container center1">
+                    <p>ROOM</p><p class="roomno"><%= r_no %></p><p> | </p><p class="roomdesc"><%= roomType %></p>
+                </div>  
+                <div class="statuslabel">
+                    <span>Unavailable</span>
+                </div>
+            </div>              
+            <div class="report-text-container">
+                <p>This room was reported</p>
+                <button id="editButton" onclick="editComment()"><i class="fa-regular fa-pen-to-square"></i>
+                edit
+                </button>
+            </div>
+            <div class="comment">
+                <!-- <label for="comment">Booking ID: </label> -->
+                <input id="comment" name="comment" value="<%= comment.rows[0].r_notes %>" disabled>
+            </div>
+            <div class="float-right">
+                <button class="button2 btn-big btn-back" onclick='window.location.href = "/hk-room-management"'>Back</button>
+                <button id="changeToAvailableBtn" class="button2 btn-big">Change to Available</button>
+                <button id="saveButton" class="button2 btn-big hidden" onclick="saveComment()">Save</button>
+            </div>
+        </div>
+        <script>
+            // change room status to available when button is clicked 
+            document.getElementById('changeToAvailableBtn').addEventListener('click', async () => {
+                try {
+                    const response = await fetch(`/change-room-to-available/<%= r_no %>`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+         
+                    if (response.ok) {
+                        // Change the button text after the status is successfully updated
+                        document.getElementById('changeToAvailableBtn').textContent = 'Room is now available';
+                    } else {
+                        console.error('Failed to update room status');
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            });
+
+            // display a notification if successful, and then take the user to the previous page
+            document.getElementById('changeToAvailableBtn').addEventListener('click', async function () {
+    
+                try {
+                    const response = await fetch(`/change-room-to-available/<%= r_no %>`, {
+                        method: 'POST',
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        alert(result.message);
+                        window.location.href = "/hk-room-management";
+                    } else {
+                        console.error('Error:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            });
+
+         </script>
+         <!-- need to be able to edit the comment when the edit button is clicked -->
+         <script>
+            function editComment() {
+            const commentInput = document.getElementById('comment');
+            commentInput.removeAttribute('disabled');
+            // show the save button (which was previously hidden)
+            const saveButton = document.getElementById('saveButton');
+            saveButton.classList.remove('hidden');
+            }
+            // adding another function to save the comment in the backend database
+            function saveComment() {
+            // disable the input field after saving so that the comment stops being editable
+            const commentInput = document.getElementById('comment');
+            commentInput.setAttribute('disabled', 'disabled');
+            // Hide the save button after saving
+            const saveButton = document.getElementById('saveButton');
+            saveButton.classList.add('hidden');
+            // Get the updated comment as a variable (see below)
+            const updatedComment = commentInput.value;
+            // pass the room number as part of the post request
+            const { r_no } = '<%= r_no %>'; 
+            fetch(`/update-comment/${r_no}`, {
+             method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ updatedComment }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Comment updated successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error updating comment:', error);
+            });
+            }
+         </script>
+</body>
+</html>

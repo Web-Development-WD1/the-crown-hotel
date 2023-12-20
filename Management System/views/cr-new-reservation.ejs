@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="../css/back-sidebar.css" rel="stylesheet">
+        <link href="../css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="../js/back-sidebar.js" defer></script>
+        <!-- calculate no. of night from chk in-out date -->
+        <script src="../js/night-calculation.js" defer></script>
+        <script src="../js/new-reservation.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span>The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p style="color: #484848;">Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Customer Reservation</h1>
+            </div>
+            <div class="book-container">
+                <p>New Reservation</p>
+            </div>
+            <!-- put table data HERE -->
+            <form method="post" action="/submit-form" id="bookingForm">
+                <div class="main-text-container">
+                <div class="text-container">
+                    <p>Customer Details</p>
+                        <div class="data">
+                            <label for="fname">First Name: </label>
+                            <input id="fname" name="fname" value="" >
+                        </div>
+                        <div class="data">
+                            <label for="lname">Last Name: </label>
+                            <input id="lname" name="lname" value="" >
+                        </div>
+                        <div class="data">
+                            <label for="address">Address: </label>
+                            <input id="address" name="address" value="">
+                        </div>
+                        <div class="data">
+                            <label for="email">Email: </label>
+                            <input id="email" name="email" value="">
+                        </div>
+                        <div class="data">
+                            <label for="cardno">Card Number: </label>
+                            <input id="cardno" name="cardno" value="">
+                        </div>
+                        <div class="data">
+                            <label for="cvc">CVC: </label>
+                            <input id="cvc" name="cvc" value="">
+                        </div>
+                        <div class="data">
+                            <label for="cardexp">Expiry Date: </label>
+                            <input id="cardexp" name="cardexp" value="">
+                        </div>
+                </div>
+                <div class="text-container">
+                    <p>Booking Details</p>
+                        <div class="data">
+                            <label for="checkinDate">Check-in Date: </label>
+                            <input type="date" id="checkinDate" name="checkinDate" onchange="cal(); calTotalPrice();">
+                        </div>
+                        <div class="data">
+                            <label for="checkoutDate">Check-out Date: </label>
+                            <input type="date" id="checkoutDate" name="checkoutDate" onchange="cal(); calTotalPrice();">
+                        </div>
+                        <div class="data">
+                            <label for="night">No. of Night(s): </label>
+                            <input id="night" name="night" value="">
+                        </div>
+                        <div class="data">
+                            <label for="totalPrice">Total Price: </label>
+                            <input id="totalPrice" name="totalPrice" value="">
+                        </div>
+                        <div class="data">
+                            <label for="note">Note(s): </label>
+                            <input id="note" name="note" value="">
+                        </div>
+                </div>
+                <div class="text-container con-small">
+                    <p>Room Allocation</p>
+                        <div class="data d-block">
+                            <label for="rtype">Room Type: </label>
+                            <!-- <label for="room-type">Room Type</label> -->
+                            <select name="rtype" id="rtype" onchange="getAvailableRooms();">
+                                <option value="Select Status" disabled selected>Select room type</option>
+                                <option value="std_d">Standard Double Room</option>
+                                <option value="std_t">Standard Twin Room</option>
+                                <option value="sup_d">Superior Double Room</option>
+                                <option value="sup_t">Superior Twin Room</option>
+                            </select>
+                        </div>
+                        <div class="data d-block">
+                            <!-- <label for="room-type">Room Type</label> -->
+                            <label for="rno">Room No: </label>
+                             <select name="rno" id="rno">
+                                <option value="Select-room-no" disabled selected>Select room no.</option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+            <div class="float-right">
+                <button class="button2 btn-big btn-back" onclick='window.location.href = "/rep-dashboard"'>Back</button>
+                <button type="button" class="button2 btn-big" id="addReservation" onclick="handleFinishBooking(); backtodetails()">Check-in</button>
+            </div>
+        </div>
+        <!-- end content -->
+    </body>
+</html>

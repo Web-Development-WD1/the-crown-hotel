@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="/css/back-sidebar.css" rel="stylesheet">
+        <link href="/css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="/js/back-sidebar.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span>The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p style="color: #484848;">Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Room Management</h1>
+            </div>
+            <div class="center">
+                <div class="book-container center1">
+                    <p>ROOM</p><p id="roomno"><%= r_no %></p><p> | </p><p id="roomdesc"><%= roomType %></p>
+                </div>  
+                <div class="statuslabel">
+                    <span>Checked-Out</span>
+                </div>
+            </div>              
+                <!-- put table data HERE -->
+                <div class="main-section">
+                    <div class="main-text-container">
+                        <div class="text-container">
+                            <p>Customer Details</p>
+                                <div class="data1">
+                                    <label for="fname">Full Name: </label>
+                                    <input id="fname" name="fname" value="<%= cleaningData.c_name %>" disabled>
+                                </div>
+                                <div class="data1">
+                                    <label for="address">Address: </label>
+                                    <input id="address" name="address" value="<%= cleaningData.c_address %>" disabled>
+                                </div>
+                                <div class="data1">
+                                    <label for="email">Email: </label>
+                                    <input id="email" name="email" value="<%= cleaningData.c_email %>" disabled>
+                                </div>
+                                <div class="data1">
+                                    <label for="cardno">Card Number: </label>
+                                    <input id="cardno" name="cardno" value="<%= cleaningData.c_cardno %>" disabled>
+                                </div>
+                                <div class="data1">
+                                    <label for="cvc">CVC: </label>
+                                    <input id="cvc" name="cvc" value="<%= cleaningData.c_cvc %>" disabled>
+                                </div>
+                                <div class="data1">
+                                    <label for="cardexp">Expiry Date: </label>
+                                    <input id="cardexp" name="cardexp" value="<%= cleaningData.c_cardexp %>" disabled>
+                                </div>
+                        </div>
+                        <div class="text-container1">
+                            <p>Booking Details</p>
+                                <div class="data">
+                                    <label for="bookRef">Booking No.: </label>
+                                    <input id="bookRef" name="bookRef" value="<%= cleaningData.b_ref %>" disabled>
+                                </div>
+                                <div class="data">
+                                    <label for="checkin-date">Check-in: </label>
+                                    <input id="checkin-date" name="checkin-date" value="<%= cleaningData.checkin %>" disabled>
+                                </div>
+                                <div class="data">
+                                    <label for="checkout-date">Check-out: </label>
+                                    <input id="checkout-date" name="checkout-date" value="<%= cleaningData.checkout %>" disabled>
+                                </div>
+                                <div class="data">
+                                    <label for="note">Note(s): </label>
+                                    <input id="note" name="note" value="<%= cleaningData.notes %>" disabled>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="same-line">
+                    <p style="color: red;">*</p><p>payment has been collected</p>
+                </div>
+                <div class="float-right bottom-margin">
+                    <!-- <button class="button2 btn-big btn-back" onclick="history.back()">Back</button> -->
+                    <a href="/room-management" class="button2 btn-big btn-back">Back</a>
+                    <select name="clean" id="clean">
+                        <option value="Assign-housekeeper" disabled selected>Assign Housekeeper</option>
+                        <option value="James Huton">James Huton</option>
+                        <option value="Billy Hall">Billy Hall</option>
+                        <option value="Jennifer Kim">Jennifer Kim</option>
+                    </select>
+                    <button type="submit" class="button2 btn-big" id="cleanBtn">Assign Cleaning</button>
+                </div>
+        </div>
+        <script>
+            document.getElementById('cleanBtn').addEventListener('click', async () => {
+                try {
+                    const selectedHousekeeper = document.getElementById('clean').value;
+        
+                    if (selectedHousekeeper === 'Assign-housekeeper') {
+                        alert('Please assign a housekeeper before checking out.');
+                        return;
+                    }
+        
+                    const response = await fetch('/assign-housekeeper/<%= r_no %>', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ clean_by: selectedHousekeeper }),
+                    });
+        
+                    if (response.ok) {
+                        const data = await response.json();
+                        alert(`Room <%= r_no %> has been assigned to ${data.clean_by}`);
+                        
+                        document.getElementById('clean').disabled = true;
+                        document.getElementById('cleanBtn').style.display = 'none';
+
+                    } else {
+                        console.error('Failed to assign housekeeper');
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            });
+        </script>
+        <!-- end content -->
+    </body>
+</html>

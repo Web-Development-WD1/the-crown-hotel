@@ -1,0 +1,588 @@
+.topic {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* begin input */
+.book-container {
+  display: flex;
+  margin-top: 10px;
+}
+
+.same-line {
+  display: flex;
+}
+
+.book-container input, select {
+  height: 40px;
+}
+
+input #checkin-from, input #checkin-to {
+  padding: 100px 20px !important;
+} 
+
+input, select {
+  border-radius: 20px;
+  border: 1px solid #484848;
+  padding: 5px 20px;
+  margin-right: 10px;
+  background-color: #ffffff;
+}
+
+select {
+  cursor: pointer;
+}
+
+input:focus {
+  outline: #6d6d6d;
+  transition: all 0.5s ease;
+}
+
+.button1, .button2 {
+  border-radius: 20px;
+  background-color: #484848;
+  color: #ffffff;
+  border: none;
+  padding: 5px 20px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.button {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.link-button {
+  max-width: fit-content !important;
+  font-size: 0.8rem;
+  padding-top: 12px;
+}
+
+.button1 {
+  min-width: 50px;
+}
+
+.button2 {
+  max-width: 145px;
+}
+
+.button1:hover, .button2:hover {
+  background-color: #6d6d6d;
+  border: 1px solid #838282;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+@media screen and (max-width: 890px) {
+  .same-line {
+    display: block;
+  }
+
+  .checkintext p {
+    margin-top: 20px;
+  }
+}
+
+/* end input */
+
+/* begin table */
+.customer-table {
+  overflow-x: auto;
+}
+
+.tableOfGuest td:nth-child(2), .tableOfGuest td:nth-child(3) {
+  text-align: left;
+}
+
+table, td, th {
+  border-bottom: 1px solid #B9B9B9;
+  padding: 12px;
+  text-align: center;
+}
+
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table a{
+  color: #000000;
+}
+
+table a:hover {
+  color: #838282;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+th {
+  height: 70px;
+}
+
+th {
+  background-color: #484848;
+  color: #ffffff;
+}
+
+td {
+  height: 40px;
+}
+/* end table */
+
+/* temporary link to booking details */
+.bk-details {
+  color: #000000;
+}
+
+.bk-details:hover {
+  color: #6d6d6d;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+/* booking details page */
+.book-container p {
+  margin-right: 10px;
+  margin-bottom: 20px;
+  font-size: 1.7em;
+}
+
+/* information box */
+.main-text-container {
+  display: flex;
+}
+
+.paymenttext {
+  display: flex;
+  justify-content: space-between;
+}
+
+.smalltext {
+  font-size: 1.0rem !important;
+  font-weight: 400 !important;
+}
+
+.con-small {
+  width: 80%;
+}
+
+.data, .data3{
+  margin-bottom: 30px;
+  padding-left: 10px;
+}
+
+.data input, .data select{
+  float: right;
+  margin-right: 10px;
+  width: 60%;
+}
+
+.data3 input {
+  float: right;
+  margin-right: 10px;
+  width: 30%;
+}
+
+input:disabled{
+  background-color: #eaeaea;
+}
+
+
+.d-block input{
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.dataNo {
+  flex: 1; /* Adjust this value to control the width of dataNo */
+}
+
+.dataRoom {
+  flex: 2; /* Adjust this value to control the width of dataRoom */
+  margin-right: 10px;
+}
+
+
+.dataNo input,
+.dataRoom input {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.float-right {
+  float: right;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.float-left {
+  float: left;
+}
+
+.btn-big, #clean {
+  border-radius: 10px;
+  padding: 10px 20px;
+  max-width: fit-content;
+}
+
+.btn-back {
+  background-color: #ffffff;
+  color: #484848;
+  margin-right: 15px;
+}
+
+.btn-back:hover {
+  cursor: pointer;
+  background-color: #cecece;
+  border: none;
+}
+
+@media screen and (max-width: 1180px) {
+  .data input{
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 1005px) {
+  .main-text-container {
+    display: block;
+  }
+  .con-small {
+    width: 100%;
+  }
+  .text-container, .text-container1, .text-container2, .text-container3{
+    margin: auto 100px 10px auto !important;
+    padding: 30px;
+    width: 100% !important;
+  }
+}
+/* responsive room management */
+@media screen and (max-width: 770px) {
+  .block-ctn {
+     flex-wrap: wrap;
+  }
+
+  #r-ref {
+    width: 20%;
+  }
+
+  #room-type {
+    width: 26%;
+  }
+
+  /* .block-ctn .button1, #status, #r-ref, #room-type {
+    margin-top: 10px;
+  } */
+  
+}
+
+@media screen and (max-width: 602px) {
+  #b-ref {
+    width: 35%;
+  }
+
+  #r-ref {
+    width: 60%;
+    margin-bottom: -10px;
+  }
+
+  .block-ctn {
+    display: block !important;
+  }
+
+  #search {
+    margin-top: 10px;
+  }
+
+  #room-type {
+    width: 60%;
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+
+  #status {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .link-button {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+
+/* Room Management - check out */
+.center {
+  text-align: center;
+}
+
+.center1 {
+  align-items: center;
+  justify-content: center;
+}
+
+.statuslabel {
+  display: inline-block !important;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0.3rem 0.3rem 0.3rem rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.float-right p{
+  font-size: 0.8rem;
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.center .button1 {
+  margin-bottom: 30px;
+}
+
+/* Room Management - check in */
+.text-container-checkin {
+  display: block;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.text-container-checkin p{
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+input #b-ref-new {
+  margin-right: 0px;
+}
+
+.button1-new {
+  background-color: #484848;
+  color: #ffffff;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  border: none;  
+}
+
+.button2-new {
+  background-color: #484848;
+  color: #ffffff;
+  margin-right: 0px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+  text-decoration: none;
+}
+
+.button1-new:hover, .button2-new:hover {
+  background-color: #6d6d6d;
+  border: 1px solid #838282;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+/* dashboard */
+.main-topic {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: -30px;
+}
+
+.info-boxes {
+  padding: 3em 0 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 2em;
+}
+
+  .info-box {
+    background: white;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2em;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+}
+
+.box-icon i{
+        display: block;
+        width: 48px;
+        height: 48px;
+        padding-top: 15px;
+}
+    
+.box-content {			
+      padding-left: 1.25em;
+      white-space: nowrap;
+      color: #484848;
+}
+
+.big {
+    display: block;
+    font-size: 2em;
+    line-height: 150%;
+    color: #000000;
+    font-weight: 600;
+}
+
+.shortcut-boxes {
+  padding: 3em 0 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 2em;
+}
+
+  .shortcut-box {
+    background: #484848;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2em;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.shortcut-box:hover {
+  transition: all 0.5s ease;
+  background-color: #838282;
+}
+
+.shortcut-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding-top: 20px;
+  color: #ffffff;
+}
+
+.shortcut-content {			
+padding-left: 0.1em;
+white-space: nowrap;
+color: #ffffff;
+}
+
+.shortcutBig {
+  display: block;
+  font-size: 1.5em;
+  line-height: 150%;
+  color: #ffffff;
+  font-weight: 600;
+  padding-top: 2px;
+}
+
+/* booking-details-check-out */
+.main-section {
+  padding: 20px;
+  background-color: #484848;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.pricetxt {
+  padding-bottom: 10px;
+}
+
+.text-container {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 60%;
+  margin: 10px;
+}
+
+.text-container1 {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
+  margin: 10px;
+}
+
+.text-container2 {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.text-container3 {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 40%;
+  margin: 10px;
+}
+
+.text-container p, 
+.text-container2 p, 
+.text-container1 p,
+.text-container3 p {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.totalPrice td{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.data1 {
+  margin-bottom: 30px;
+  padding-left: 10px;
+}
+
+.data1 input{
+  float: right;
+  margin-right: 10px;
+  width: 70%;
+}
+
+/* report icon  */
+.notes {
+  display: none;
+  font-size: 0.8rem;
+}
+
+.report {
+  color: red;
+}
+
+.center1 {
+  justify-content: center;
+  text-align: center;
+}
+
+.bottom-margin {
+  margin-bottom: 30px;
+}
+
+.deleteBtn {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}

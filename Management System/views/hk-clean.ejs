@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Housekeeper</title>
+        <!-- CSS for header & footer -->
+        <link href="/css/housekeeper.css" rel="stylesheet">
+        <link href="/css/back-sidebar.css" rel="stylesheet">
+        <link rel="icon" href="/images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- import font family GFS Didot -->
+        <link href="https://fonts.cdnfonts.com/css/gfs-didot" rel="stylesheet">
+        <!-- sidebar -->
+        <script src="/js/back-sidebar.js" defer></script>
+        <!-- event handler for make room available button -->
+        <!-- <script src="/js/change-to-available-clean.js" defer></script> -->
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="/images/logo_hotel_black.png">
+                    <span style="font-size: small;">The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="/images/user-clean.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Chocolate C.</p>
+                    <p>Housekeeper</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/hk-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/hk-room-management" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Room Management</h1>
+            </div>
+            <div class="center">
+                <div class="book-container center1">
+                    <p>Cleaning: ROOM</p>
+                    <p class="roomno"><%= r_no %></p>
+                    <p> | </p>
+                    <p class="roomdesc"><%= roomType %></p>
+                  </div>
+            </div>              
+            <div class="clean-text-container">
+                <div class="center">
+                    <button class="huge-btn" id="changeToAvailableBtn">
+                        Change to Available
+                    </button>
+                </div>
+                <hr>
+                <div class="center">
+                    <p class="wrong">something went wrong?</p>
+                    <div class="comment-small">
+                        <!-- <label for="comment">Booking ID: </label> -->
+                        <input id="comment" name="comment" placeholder="write some comments" value="">
+                        <button class="reportbutton" id="reportBtn">Report the room</button>
+                        <!-- Added a <div> to display a message after the user reports and issue with the room -->
+                        <div id="reportMessage" style="display: none;">
+                            <p>Thank you. The issue has been reported.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="center">
+                <button class="back-btn-clean" onclick="history.back()">Back</button>
+            </div>
+        </div>
+    
+        <script>
+            // change the room status to available when 'change to available' button is clicked 
+            document.getElementById('changeToAvailableBtn').addEventListener('click', async () => {
+                try {
+                    // fetch request to update the room status to available
+                    const response = await fetch(`/change-room-to-available/<%= r_no %>`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+         
+                    if (response.ok) {
+                        // change the text of the button after successful update
+                        document.getElementById('changeToAvailableBtn').textContent = 'Room is now available';
+                        const result = await response.json();
+                        // Display push notification
+                        alert(result.message);
+                        // redirect the user to the room management page
+                        window.location.href = "/hk-room-management";
+                    } else {
+                        console.error('Failed to update room status');
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            });
+         </script>
+<!-- Adding a new script (similar to the one above) to handle the report room function -->
+        <script>
+            document.getElementById('reportBtn').addEventListener('click', async () => {
+            try {
+                const comment = document.getElementById('comment').value;  
+                const response = await fetch(`/report-room/<%= r_no %>`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ comment }),
+                });  
+                if (response.ok) {
+                document.getElementById('reportMessage').textContent = 'Thank you. The issue has been reported.';
+                document.getElementById('reportMessage').style.display = 'block';
+                document.getElementById('reportBtn').disabled = true;
+                const result = await response.json();
+                alert(result.message);
+                window.location.href = "/hk-room-management";                
+                } else {
+                console.error('Failed to report room');
+                }
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+            });
+        </script>
+
+<!-- Adding a new script to display a message after the user successfully reports an issue with the room -->
+        <script>
+            document.getElementById('reportBtn').addEventListener('click', async () => {
+              try {
+                const comment = document.getElementById('comment').value;
+          
+                const response = await fetch(`/report-room/<%= r_no %>`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ comment }),
+                });
+          
+                if (response.ok) {
+                  // show the report message (that was previously hidden)
+                  document.getElementById('reportMessage').style.display = 'block';         
+                  // disable the report button after reporting
+                  document.getElementById('reportBtn').disabled = true;
+                } else {
+                  console.error('Failed to report room');
+                }
+              } catch (error) {
+                console.error('Error:', error.message);
+              }
+            });
+          </script>
+
+</body>
+</html>

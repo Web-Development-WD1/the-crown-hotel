@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="../css/back-sidebar.css" rel="stylesheet">
+        <link href="../css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="/images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="../js/back-sidebar.js" defer></script>
+        <script src="../js/add-payment.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span>The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p style="color: #484848;">Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Room Management</h1>
+            </div>
+            <div class="center">
+                <div class="book-container center1">
+                    <p>ROOM</p><p id="roomno"><%= r_no %></p><p> | </p><p id="roomdesc"><%= roomType %></p>
+                </div>  
+                <div class="statuslabel">
+                    <span>Occupied</span>
+                </div>
+            </div>              
+            <!-- put table data HERE -->
+            <div class="main-section">
+                <div class="main-text-container">
+                    <div class="text-container">
+                        <p>Customer Details</p>
+                        <div class="data1">
+                            <label for="fname">Full Name: </label>
+                            <input id="fname" name="fname" value="<%= roomDetails.c_name %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="address">Address: </label>
+                            <input id="address" name="address" value="<%= roomDetails.c_address %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="email">Email: </label>
+                            <input id="email" name="email" value="<%= roomDetails.c_email %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="cardno">Card Number: </label>
+                            <input id="cardno" name="cardno" value="<%= roomDetails.c_cardno %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="cvc">CVC: </label>
+                            <input id="cvc" name="cvc" value="<%= roomDetails.c_cvc %>" disabled>
+                        </div>
+                        <div class="data1">
+                            <label for="cardexp">Expiry Date: </label>
+                            <input id="cardexp" name="cardexp" value="<%= roomDetails.c_cardexp %>" disabled>
+                        </div>
+                    </div>
+                    <div class="text-container1">
+                        <p>Booking Details</p>
+                        <div class="data">
+                            <label for="bookRef">Booking No.: </label>
+                            <input id="bookRef" name="bookRef" value="<%= roomDetails.b_ref %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="checkin-date">Check-in: </label>
+                            <input id="checkin-date" name="checkin-date" value="<%= roomDetails.checkin %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="checkout-date">Check-out: </label>
+                            <input id="checkout-date" name="checkout-date" value="<%= roomDetails.checkout %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="note">Note(s): </label>
+                            <input id="note" name="note" value="<%= roomDetails.notes %>" disabled>
+                        </div>
+                    </div>
+                    <div class="text-container3">
+                        <p>Additional Payment</p>
+                        <form id="itemForm" action="">
+                            <div class="data3">
+                                <label for="steakSet">Steak Set:</label>
+                                <input type="number" class="item-input" id="steakSet" name="Steak Set" step="1" min="0" value="0">
+                            </div>
+                            <div class="data3">
+                                <label for="saladSet">Salad Set:</label>
+                                <input type="number" class="item-input" id="saladSet" name="Salad Set" step="1" min="0" value="0">
+                            </div>
+                            <div class="data3">
+                                <label for="beer">Beer:</label>
+                                <input type="number" class="item-input" id="Beer" name="Beer" step="1" min="0" value="0">
+                            </div>
+                            <div class="data3">
+                                <label for="Wine">Wine:</label>
+                                <input type="number" class="item-input" id="Wine" name="Wine" step="1" min="0" value="0">
+                            </div>                        
+                        </form>
+                        <button type="button" id="addBtn" class="button1 btn-big float-right">Add Item</button>
+                        <table id="itemTable">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Unit Price</th>
+                                    <th>QTY</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="tableOfItem">
+                                <% if (roomDetails && roomDetails.itemDetails && roomDetails.itemDetails.length > 0) { %>
+                                    <% for (let i = 0; i < roomDetails.itemDetails.length; i++) { %>
+                                        <tr>
+                                            <td><%= roomDetails.itemDetails[i].item %></td>
+                                            <td>£ <%= roomDetails.itemDetails[i].price %></td>
+                                            <td><%= roomDetails.itemDetails[i].itemqty %></td>
+                                            <td>£ <%= roomDetails.itemDetails[i].total %></td>
+                                            <td><button class="button" id="deleteBtn" data-itemindex="<%= i %>"><i class="fa-solid fa-trash"></i></button></td>
+                                        </tr>
+                                    <% } %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="5">No item details available</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="float-right">
+                <a href="/room-management" class="button2 btn-big btn-back">Back</a>
+            </div>
+        </div>
+    </div>    <!-- end content -->
+    </body>
+</html>

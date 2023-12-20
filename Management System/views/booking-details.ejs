@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Crown Hotel | Reception</title>
+        <!-- css links -->
+        <link href="/css/back-sidebar.css" rel="stylesheet">
+        <link href="/css/customer-service.css" rel="stylesheet">
+        <!-- icon for page title -->
+        <link rel="icon" href="/images/logo_hotel_black.png" type="image/icon type">
+        <!-- icon from fontawesome -->
+        <script src="https://kit.fontawesome.com/cc44fc4986.js" crossorigin="anonymous"></script>
+        <!-- sidebar js -->
+        <script src="/js/back-sidebar.js" defer></script>
+    </head>
+    <body>
+        <!-- begin sidebar -->
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img class="img-size" src="../images/logo_hotel_black.png" alt="The Crown Hotel">
+                    <span>The Crown Hotel</span>
+                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>            
+            </div>
+            <div class="user">
+                <img src="../images/user-rep.png" alt="user" class="user-img">
+                <div>
+                    <p class="bold">Cake C.</p>
+                    <p style="color: #484848;">Receptionist</p>
+                </div>
+            </div>
+            <!-- begin tooltip -->
+            <ul>
+                <li>
+                    <a href="/rep-dashboard">
+                        <i class="fa-solid fa-gauge-simple-high"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="/customer-reservation" class="active-page">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-item">Customer Reservation</span>
+                    </a>
+                    <span class="tooltip">Customer Reservation</span>
+                </li>
+                <li>
+                    <a href="/room-management">
+                        <i class="fa fa-bed"></i>
+                        <span class="nav-item">Room Management</span>
+                    </a>
+                    <span class="tooltip">Room Management</span>
+                </li>
+            </ul>
+            <!-- end tooltip -->
+        </div>
+        <!-- end sidebar -->
+
+        <!-- begin content -->
+        <div class="main-content">
+            <div class="topic">
+                <h1>Customer Reservation</h1>
+            </div>
+            <div class="book-container">
+                <p>Booking Reference:</p>
+                <p class="booking-no"><%= b_ref %></p>
+            </div>
+            <!-- put table data HERE -->
+            <div class="main-text-container">
+                <div class="text-container">
+                    <p>Customer Details</p>
+                        <div class="data">
+                            <label for="fname">Full Name: </label>
+                            <input id="fname" name="fname" value="<%= mappedBookDetail ? mappedBookDetail.c_name : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="address">Address: </label>
+                            <input id="address" name="address" value="<%= mappedBookDetail ? mappedBookDetail.c_address : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="email">Email: </label>
+                            <input id="email" name="email" value="<%= mappedBookDetail ? mappedBookDetail.c_email : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="cardno">Card Number: </label>
+                            <input id="cardno" name="cardno" value="<%= mappedBookDetail ? mappedBookDetail.c_cardno : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="cvc">CVC: </label>
+                            <input id="cvc" name="cvc" value="<%= mappedBookDetail ? mappedBookDetail.c_cvc : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="cardexp">Expiry Date: </label>
+                            <input id="cardexp" name="cardexp" value="<%= mappedBookDetail ? mappedBookDetail.c_cardexp : '' %>" disabled>
+                        </div>
+                </div>
+                <div class="text-container">
+                    <p>Booking Details</p>
+                        <div class="data">
+                            <label for="checkin-date">Check-in: </label>
+                            <input id="checkin-date" name="checkin-date" value="<%= mappedBookDetail ? mappedBookDetail.checkin : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="checkout-date">Check-out: </label>
+                            <input id="checkout-date" name="checkout-date" value="<%= mappedBookDetail ? mappedBookDetail.checkout : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="night">No. of Night(s): </label>
+                            <input id="night" name="night" value="<%= mappedBookDetail ? mappedBookDetail.no_nights : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="total-price">Total Price: </label>
+                            <input id="total-price" name="total-price" value="<%= mappedBookDetail ? mappedBookDetail.total_price : '' %>" disabled>
+                        </div>
+                        <div class="data">
+                            <label for="note">Note(s): </label>
+                            <input id="note" name="note" value="<%= mappedBookDetail ? mappedBookDetail.notes : '' %>" disabled>
+                        </div>
+                </div>
+                <div class="text-container con-small">
+                    <p>Room Allocation</sp>
+                    <% if (mappedBookDetail && mappedBookDetail.rooms && mappedBookDetail.rooms.length > 0) { %>
+                        <% for (let i = 0; i < mappedBookDetail.rooms.length; i++) { %>
+                        <p class="smalltext" style="text-align: left; margin-bottom: 5px;">Room <%= i + 1 %></p>
+                        <div class="same-line">
+                            <div class="dataRoom">
+                                <label for="rtype" style="font-size: 0.8rem;">Room Type: </label>
+                                <input id="rtype" name="rtype" value="<%= mappedBookDetail.rooms[i].r_class %>" disabled>
+                            </div>
+                            <div class="dataNo">
+                                <label for="rno" style="font-size: 0.8rem;">Room No: </label>
+                                <input id="rno" name="rno" value="<%= mappedBookDetail.rooms[i].r_no %>" disabled>
+                            </div>
+                        </div>
+                        <hr style="margin: 20px auto;">
+                        <% } %>
+                    <% } else { %>
+                        <div class="data d-block">
+                            <p class="smalltext">No rooms available</p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="float-right">
+                <button class="button2 btn-big btn-back" onclick="history.back()">Back</button>
+                <button id="checkinBtn" type="submit" class="button2 btn-big">Check-in</button>
+            </div>
+        </div>
+        <script>
+            document.getElementById('checkinBtn').addEventListener('click', async () => {
+                try {
+                    // Make an asynchronous request to update the room status
+                    const response = await fetch(`/update-book-status/<%= b_ref %>`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+         
+                    if (response.ok) {
+                        alert('<%= b_ref %>' + ' has been successfully checked-in');
+                        window.location.href = '/customer-reservation';
+                    } else {
+                        console.error('Failed to check-in');
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            });
+        </script>
+        <!-- end content -->
+    </body>
+</html>
